@@ -11,7 +11,7 @@ let currentIndex = 0;
 let currentList = [];
 let selectedCategory = null; // Kategori seçildi mi kontrolü
 
-// SLAYT GÖSTERİSİ (Dosyalar ana dizinde olduğu için yollar düzeltildi)
+// SLAYT GÖSTERİSİ (Yumuşak Akıcı Geçişli)
 const slides = [
     "dukkan-desktop.jpg",
     "slayt2.jpg",
@@ -22,11 +22,17 @@ let currentSlideIndex = 0;
 
 function changeSlide() {
     if (!slides.length || !heroSlider) return;
+    
+    // Önce resmi hafifçe şeffaflaştır
+    heroSlider.style.transition = "background-image 1s ease-in-out";
     heroSlider.style.backgroundImage = `url("${slides[currentSlideIndex]}")`;
+    
     currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 }
-setInterval(changeSlide, 4000);
+
+// İlk çalıştır ve her 4 saniyede bir akıcı şekilde değiştir
 changeSlide();
+setInterval(changeSlide, 4000);
 
 const products = [
     { name: "Taç Nevresim Takımı", price: "1699 ₺", category: "Nevresim" },
