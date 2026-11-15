@@ -9,9 +9,9 @@ const loadMoreBtn = document.getElementById("loadMoreBtn");
 const productsPerPage = 56;
 let currentIndex = 0;
 let currentList = [];
-let selectedCategory = null; // Kategori seçildi mi kontrolü
+let selectedCategory = null;
 
-// SLAYT GÖSTERİSİ (Yumuşak Akıcı Geçişli)
+// SLAYT GÖSTERİSİ (Videodaki gibi akıcı otomatik geçiş)
 const slides = [
     "dukkan-desktop.jpg",
     "slayt2.jpg",
@@ -22,17 +22,11 @@ let currentSlideIndex = 0;
 
 function changeSlide() {
     if (!slides.length || !heroSlider) return;
-    
-    // Önce resmi hafifçe şeffaflaştır
-    heroSlider.style.transition = "background-image 1s ease-in-out";
     heroSlider.style.backgroundImage = `url("${slides[currentSlideIndex]}")`;
-    
     currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 }
-
-// İlk çalıştır ve her 4 saniyede bir akıcı şekilde değiştir
-changeSlide();
 setInterval(changeSlide, 4000);
+changeSlide();
 
 const products = [
     { name: "Taç Nevresim Takımı", price: "1699 ₺", category: "Nevresim" },
@@ -126,7 +120,7 @@ function showAbout(pushHistory = true) {
     aboutPage.style.display = "block";
 }
 
-// ARAMA MOTORU (Önce kategori, sonra ürün arar)
+// ARAMA MOTORU
 function handleSearch() {
     const query = searchInput.value.toLowerCase().trim();
 
@@ -156,7 +150,7 @@ function handleSearch() {
     loadMore();
 }
 
-// GERİ TUŞU DÜZELTMESİ (TARAYICI GEÇMİŞİ)
+// GERİ TUŞU DÜZELTMESİ
 window.addEventListener("popstate", (event) => {
     if (event.state) {
         if (event.state.page === "home") showHome(false);
@@ -218,7 +212,7 @@ function startMusicOnce() {
     musicStarted = true;
 
     bgMusic.src = musicList[musicIndex];
-    bgMusic.volume = 0.3; // %30 ses (kurumsal)
+    bgMusic.volume = 0.3;
     bgMusic.play().catch(() => {});
 
     document.removeEventListener("click", startMusicOnce);
