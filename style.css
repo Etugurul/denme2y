@@ -28,7 +28,7 @@ body {
 }
 
 .logo {
-    width: 280px;
+    width: 340px;
     height: auto;
 }
 
@@ -48,47 +48,91 @@ body {
     text-decoration: underline;
 }
 
-/* HERO (FOTOĞRAFSIZ, ŞIK VE HIZLI) */
+/* HERO / SLAYT ALANI (Akıcı ve Yumuşak Geçiş İçin Güncellendi) */
 .hero {
-    height: 1100px; /* ZORLA UZATIR */
+    height: 480px; 
     width: 100%;
-
-    background-image:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-        url("./images/dukkan-desktop.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Akıcı geçiş için arka plan katmanı */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    z-index: 1;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    z-index: 1;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
 }
 
 /* MOBİL */
 @media (max-width: 768px) {
     .hero {
-        height: 240px;
-        background-image:
-            linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-            url("./images/dukkan-mobile.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        height: 500px;
+    }
+    .logo {
+        width: 320px;
     }
 }
 
 .hero h1 {
-    color: #c40000;
+    color: #fff;
     font-size: 42px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 .hero p {
     color: #eee;
     margin-top: 10px;
     font-size: 18px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* ARAMA ÇUBUĞU */
+.search-container {
+    width: 100%;
+    max-width: 2400px;
+    margin: 0 auto;
+    padding: 30px 50px 0 50px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #c40000;
 }
 
 /* KATEGORİLER */
@@ -96,30 +140,26 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
-
-    width: 100%;          /* SAYFAYI DOLDUR */
-    max-width: 2400px;    /* ÇOK AÇILMASIN */
-    margin: 0 auto;       /* ORTALA */
-
+    width: 100%;         
+    max-width: 2400px;    
+    margin: 0 auto;       
     padding: 50px;
 }
 
 .category-card {
-    height: 160px;      /* SABİT YÜKSEKLİK */
+    height: 160px;      
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
     background: #0f0f0f;
     color: #fff;
     border-radius: 14px;
     font-weight: 600;
     font-size: 22px;
+    cursor: pointer;
 }
-
 
 .category-card:hover {
     background: #c40000;
@@ -131,6 +171,9 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 25px;
     padding: 50px;
+    max-width: 2400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .product-card {
@@ -185,6 +228,34 @@ body {
     background: #a00000;
 }
 
+/* HAKKIMIZDA */
+.about-page {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 30px;
+    line-height: 1.8;
+}
+
+.about-page h1 {
+    color: #c40000;
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.about-page p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.about-page ul {
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.about-page li {
+    margin-bottom: 10px;
+}
+
 /* LOAD MORE */
 #loadMoreBtn {
     display: block;
@@ -205,7 +276,7 @@ body {
     transform: scale(1.05);
 }
 
-/* FOOTER – EN ALTA YAPIŞIR */
+/* FOOTER */
 .footer {
     background: #000;
     color: #777;
@@ -216,15 +287,10 @@ body {
 
 /* ================= MOBİL ================= */
 @media (max-width: 768px) {
-
     .header {
         flex-direction: column;
         padding: 20px 15px;
         gap: 15px;
-    }
-
-    .logo {
-        width: 220px;
     }
 
     .menu {
@@ -236,11 +302,6 @@ body {
     .menu a {
         margin-left: 0;
         font-size: 15px;
-    }
-
-    .hero {
-        min-height: 240px;
-        padding: 35px 15px;
     }
 
     .hero h1 {
