@@ -11,12 +11,12 @@ let currentIndex = 0;
 let currentList = [];
 let selectedCategory = null; // Kategori seçildi mi kontrolü
 
-// SLAYT GÖSTERİSİ
+// SLAYT GÖSTERİSİ (Dosyalar ana dizinde olduğu için yollar düzeltildi)
 const slides = [
-    "./images/dukkan-desktop.jpg",
-    "./images/slayt2.jpg",
-    "./images/slayt3.jpg",
-    "./images/slayt4.jpg"
+    "dukkan-desktop.jpg",
+    "slayt2.jpg",
+    "slayt3.jpg",
+    "slayt4.jpg"
 ];
 let currentSlideIndex = 0;
 
