@@ -18,43 +18,37 @@ body {
     flex-direction: column;
 }
 
-/* HEADER - HER CİHAZDA AYNI HİYERARŞİ (ÜSTTE LOGO, ALTTA MENÜ) */
+/* HEADER - PC'DE SOL LOGO / SAĞ MENÜ */
 .header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    padding: 15px 20px;
+    padding: 25px 40px;
     background: #f7f7f7;
     border-bottom: 2px solid #c40000;
-    gap: 15px;
     width: 100%;
 }
 
 .logo-area {
-    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-/* LOGO NE FAZLA NE AZ TAM SIĞACAK ŞEKİLDE */
+/* LOGO EBATI */
 .logo {
-    width: 90%;
-    max-width: 380px;
+    width: 340px;
+    max-width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
 }
 
-/* MENU - HER CİHAZDA LOGONUN ALTINDA YAN YANA */
+/* MENU - PC'DE SAĞDA YAN YANA */
 .menu {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     gap: 20px;
-    width: 100%;
 }
 
 .menu a {
@@ -69,11 +63,9 @@ body {
     text-decoration: underline;
 }
 
-/* HERO (SLAYT ALANI - HER CİHAZDA EKRAN ORANINA GÖRE EŞİT) */
+/* HERO (SLAYT ALANI) */
 .hero {
-    height: 45vh;
-    min-height: 280px;
-    max-height: 480px;
+    height: 480px;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -89,7 +81,7 @@ body {
 
 .hero h1 {
     color: #fff;
-    font-size: clamp(26px, 4vw, 42px);
+    font-size: 42px;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
     position: relative;
     z-index: 2;
@@ -99,7 +91,7 @@ body {
 .hero p {
     color: #eee;
     margin-top: 10px;
-    font-size: clamp(15px, 2vw, 18px);
+    font-size: 18px;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     position: relative;
     z-index: 2;
@@ -277,14 +269,45 @@ body {
     margin-top: auto;
 }
 
-/* ================= MOBİL UYUMLULUK (SADECE KARTLAR VE BOŞLUKLAR) ================= */
+/* ================= MOBİL (ÜSTTE LOGO, ALTINDA MENÜ) ================= */
 @media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px 15px;
+        gap: 14px;
+    }
+
+    .logo-area {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .logo {
+        width: 90%;
+        max-width: 320px;
+    }
+
     .menu {
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 14px;
     }
 
     .menu a {
         font-size: 14px;
+    }
+
+    .hero {
+        height: 260px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero p {
+        font-size: 15px;
     }
 
     .search-container {
