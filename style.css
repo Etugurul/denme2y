@@ -35,7 +35,7 @@ body {
     align-items: center;
 }
 
-/* LOGO EBATI */
+/* LOGO EBATI (PC) */
 .logo {
     width: 340px;
     max-width: 100%;
@@ -63,12 +63,14 @@ body {
     text-decoration: underline;
 }
 
-/* HERO (SLAYT ALANI) */
+/* HERO (SLAYT ALANI - PC'DE FOTOĞRAFLARIN KESİLMEMESİ İÇİN EKRANA ORANTILI) */
 .hero {
-    height: 480px;
     width: 100%;
+    height: 36vw;
+    min-height: 380px;
+    max-height: 620px;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
     transition: background-image 1s ease-in-out;
     display: flex;
@@ -269,29 +271,34 @@ body {
     margin-top: auto;
 }
 
-/* ================= MOBİL (ÜSTTE LOGO, ALTINDA MENÜ) ================= */
+/* ================= MOBİL (KENARLARA TAM YAPIŞIK LOGO + ALTINDA MENÜ) ================= */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
         justify-content: center;
-        padding: 15px 15px;
-        gap: 14px;
+        padding: 0; /* Üst, sağ ve sol boşluklar tamamen sıfırlandı */
+        gap: 0;
     }
 
     .logo-area {
         width: 100%;
-        justify-content: center;
+        margin: 0;
+        padding: 0;
     }
 
     .logo {
-        width: 90%;
-        max-width: 320px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block; /* Alttaki ince satır boşluğunu da siler */
     }
 
     .menu {
+        width: 100%;
         flex-wrap: wrap;
         justify-content: center;
         gap: 14px;
+        padding: 12px 10px; /* Menü kendi içinde nefes alsın ama logo ile arasında boşluk kalmasın */
     }
 
     .menu a {
@@ -299,7 +306,9 @@ body {
     }
 
     .hero {
-        height: 260px;
+        height: 55vw;
+        min-height: 220px;
+        max-height: 320px;
     }
 
     .hero h1 {
